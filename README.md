@@ -1,5 +1,5 @@
 # Blazor.Pagination
-A reusable pagination component for Blazor.
+A reusable pagination component for .NET Core Blazor.
 
 
 ![NuGet](https://img.shields.io/nuget/v/BlazorPagination.svg?style=flat-square&label=nuget)
