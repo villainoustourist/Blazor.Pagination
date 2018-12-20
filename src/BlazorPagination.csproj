@@ -9,10 +9,10 @@
     <Title>Pagination control for .NET Core Blazor</Title>
     <Authors>villainoustourist</Authors>
     <Product>BlazorPagination</Product>
-    <PackageProjectUrl>https://github.com/villainoustourist/BlazorPagination/</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/villainoustourist/BlazorPagination/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/villainoustourist/Blazor.Pagination/</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/villainoustourist/Blazor.Pagination/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>blazor aspnetcore component bootstrap4 pagination</PackageTags>
-    <Description>A reusable pagination component for Blazor.</Description>
+    <Description>A reusable pagination component for Blazor to show related content across multiple pages.</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <AssemblyName>BlazorPagination</AssemblyName>
   </PropertyGroup>
