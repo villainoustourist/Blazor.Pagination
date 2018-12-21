@@ -3,21 +3,16 @@
 
 @if (Result.PageCount > 1)
 {
-    <ul class="pagination justify-content-end"> 
+    <ul class="pagination justify-content-end">
         @if (ShowFirstLast)
         {
             if (Result.CurrentPage == 1)
             {
-        <li class="page-item disabled"><a class="page-link" href tabindex="-1"><span aria-hidden="true">&laquo;</span><span class="sr-only">First</span></a></li>
+        <li class="page-item disabled"><a class="page-link" href tabindex="-1"><span aria-hidden="true">&laquo;</span><span class="sr-only">@FirstText</span></a></li>
             }
             else
             {
-                <li class="page-item">
-                    <a class="page-link" href onclick="@(async () => await PagerButtonClicked(1))">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">First</span>
-                    </a>
-                </li>
+        <li class="page-item"><a class="page-link" href onclick="@(async () => await PagerButtonClicked(1))"><span aria-hidden="true">&laquo;</span><span class="sr-only">@FirstText</span></a></li>
             }
         }
         @if (HasPrevious)
@@ -28,16 +23,19 @@
         {
         <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"><span aria-hidden="true">@PreviousText</span><span class="sr-only">Go to previous page</span></a></li>
         }
-        @for (var i = Start; i <= Finish; i++)
+        @if (ShowPageNumbers)
         {
-            var currentIndex = i;
-            if (i == Result.CurrentPage)
+            for (var i = Start; i <= Finish; i++)
             {
+                var currentIndex = i;
+                if (i == Result.CurrentPage)
+                {
         <li class="page-item active"><a class="page-link">@i</a></li>
-            }
-            else
-            {
+                }
+                else
+                {
         <li class="page-item"><a class="page-link btn btn-link" onclick="@(async () => await PagerButtonClicked(currentIndex))">@currentIndex</a></li>
+                }
             }
         }
         @if (HasNext)
@@ -71,6 +69,9 @@ private Func<int, Task> OnPageChanged { get; set; }
 
 [Parameter]
 private bool ShowFirstLast { get; set; } = false;
+
+[Parameter]
+private bool ShowPageNumbers { get; set; } = true;
 
 [Parameter]
 private string FirstText { get; set; } = "First";
