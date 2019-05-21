@@ -102,9 +102,9 @@ protected override void OnParametersSet()
     Finish = Math.Min(CurrentPage + half, PageCount);
     VisiblePages = Math.Min(VisiblePages, PageCount);
     if (Start == 1)
-        Finish = VisiblePages;
+    { Finish = VisiblePages; }
     if (Finish >= PageCount)
-        Start = PageCount - VisiblePages;
+    { Start = PageCount - VisiblePages; }
     base.OnParametersSet();
 }
 
