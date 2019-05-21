@@ -1,8 +1,11 @@
 # Blazor.Pagination
 A reusable pagination component for .NET Core Blazor.
 
+[![Build Status](https://kfranken.visualstudio.com/Personal/_apis/build/status/Build%20%26%20Publish%20Blazor%20Pagination?branchName=master)](https://kfranken.visualstudio.com/Personal/_build/latest?definitionId=13&branchName=master)
+[![Package Version](https://img.shields.io/nuget/v/BlazorPagination.svg)](https://www.nuget.org/packages/BlazorPagination/)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/BlazorPagination.svg)](https://www.nuget.org/packages/BlazorPagination/)
+[![License](https://img.shields.io/github/license/villainoustourist/Blazor.Pagination.svg)](https://github.com/villainoustourist/Blazor.Pagination/blob/master/LICENSE)
 
-![NuGet](https://img.shields.io/nuget/v/BlazorPagination.svg?style=flat-square&label=nuget)
 
 ## Installation
 
