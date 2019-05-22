@@ -68,7 +68,7 @@ private int PageCount{ get; set; }
 private int CurrentPage{ get; set; }
 
 [Parameter]
-private Func<int, Task> OnPageChanged { get; set; }
+private Func<int, Task> OnPageChanged { get; set; } = null;
 
 [Parameter]
 private bool ShowFirstLast { get; set; } = false;
