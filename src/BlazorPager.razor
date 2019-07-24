@@ -1,4 +1,8 @@
 ﻿<style>
+    .sort-link {
+        cursor: pointer;
+        color: #007bff !important;
+    }
 </style>
 
 @if (PageCount > 1)
@@ -12,16 +16,16 @@
             }
             else
             {
-        <li class="page-item"><a class="page-link" href onclick="@(async () => await PagerButtonClicked(1))"><span aria-hidden="true">&laquo;</span><span class="sr-only">@FirstText</span></a></li>
+        <li class="page-item"><a class="page-link sort-link " href onclick="@(async () => await PagerButtonClicked(1))"><span aria-hidden="true">&laquo;</span><span class="sr-only">@FirstText</span></a></li>
             }
         }
         @if (HasPrevious)
         {
-        <li class="page-item"><a class="page-link" onclick="@(async () => await PagerButtonClicked(CurrentPage - 1))"><span aria-hidden="true">@PreviousText</span><span class="sr-only">Go to previous page</span></a></li>
+        <li class="page-item"><a class="page-link sort-link" onclick="@(async () => await PagerButtonClicked(CurrentPage - 1))"><span aria-hidden="true">@PreviousText</span><span class="sr-only">Go to previous page</span></a></li>
         }
         else
         {
-        <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"><span aria-hidden="true">@PreviousText</span><span class="sr-only">Go to previous page</span></a></li>
+        <li class="page-item disabled"><a class="page-link" tabindex="-1"><span aria-hidden="true">@PreviousText</span><span class="sr-only">Go to previous page</span></a></li>
         }
         @if (ShowPageNumbers)
         {
@@ -34,13 +38,13 @@
                 }
                 else
                 {
-        <li class="page-item"><a class="page-link btn btn-link" onclick="@(async () => await PagerButtonClicked(currentIndex))">@currentIndex</a></li>
+        <li class="page-item"><a class="page-link sort-link" onclick="@(async () => await PagerButtonClicked(currentIndex))">@currentIndex</a></li>
                 }
             }
         }
         @if (HasNext)
         {
-        <li class="page-item"><a class="page-link btn btn-link" onclick="@(async () => await PagerButtonClicked(CurrentPage + 1))"><span aria-hidden="true">@NextText</span><span class="sr-only">Go to next page</span></a></li>
+        <li class="page-item"><a class="page-link sort-link" onclick="@(async () => await PagerButtonClicked(CurrentPage + 1))"><span aria-hidden="true">@NextText</span><span class="sr-only">Go to next page</span></a></li>
         }
         else
         {
@@ -54,7 +58,7 @@
             }
             else
             {
-        <li class="page-item"><a class="page-link btn btn-link" onclick="@(async () => await PagerButtonClicked(PageCount))"><span aria-hidden="true">@LastText</span><span class="sr-only">Go to last page</span></a></li>
+        <li class="page-item"><a class="page-link sort-link" onclick="@(async () => await PagerButtonClicked(PageCount))"><span aria-hidden="true">@LastText</span><span class="sr-only">Go to last page</span></a></li>
             }
         }
     </ul>
