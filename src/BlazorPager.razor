@@ -26,12 +26,12 @@
             }
             else
             {
-                <li class="page-item noselect"><a class="page-link sort-link" @onclick="() => PagerButtonClicked(1)"><span aria-hidden="true">&laquo;</span><span class="sr-only">@FirstText</span></a></li>
+                <li class="page-item noselect"><a class="page-link sort-link" @onclick="@(() => PagerButtonClicked(1))"><span aria-hidden="true">&laquo;</span><span class="sr-only">@FirstText</span></a></li>
             }
         }
         @if (HasPrevious)
         {
-            <li class="page-item noselect"><a class="page-link sort-link" @onclick="() => PagerButtonClicked(CurrentPage - 1)"><span aria-hidden="true">@PreviousText</span><span class="sr-only">Go to previous page</span></a></li>
+            <li class="page-item noselect"><a class="page-link sort-link" @onclick="@(() => PagerButtonClicked(CurrentPage - 1))"><span aria-hidden="true">@PreviousText</span><span class="sr-only">Go to previous page</span></a></li>
         }
         else
         {
@@ -48,13 +48,13 @@
                 }
                 else
                 {
-                    <li class="page-item noselect"><a class="page-link sort-link" @onclick="() => PagerButtonClicked(currentIndex)">@currentIndex</a></li>
+                    <li class="page-item noselect"><a class="page-link sort-link" @onclick="@(() => PagerButtonClicked(currentIndex))">@currentIndex</a></li>
                 }
             }
         }
         @if (HasNext)
         {
-            <li class="page-item"><a class="page-link sort-link" @onclick="() => PagerButtonClicked(CurrentPage + 1)"><span aria-hidden="true">@NextText</span><span class="sr-only">Go to next page</span></a></li>
+            <li class="page-item"><a class="page-link sort-link" @onclick="@(() => PagerButtonClicked(CurrentPage + 1))"><span aria-hidden="true">@NextText</span><span class="sr-only">Go to next page</span></a></li>
         }
         else
         {
@@ -68,42 +68,33 @@
             }
             else
             {
-                <li class="page-item"><a class="page-link sort-link" onclick="() => PagerButtonClicked(PageCount)"><span aria-hidden="true">@LastText</span><span class="sr-only">Go to last page</span></a></li>
+                <li class="page-item"><a class="page-link sort-link" @onclick="@(() => PagerButtonClicked(PageCount))"><span aria-hidden="true">@LastText</span><span class="sr-only">Go to last page</span></a></li>
             }
         }
     </ul>
 }
 
 @code {
-    [Parameter]
-    public int PageCount { get; set; }
 
-    [Parameter]
-    public int CurrentPage { get; set; }
+    [Parameter] public int PageCount { get; set; }
 
-    [Parameter]
-    public Action<int> OnPageChanged { get; set; } = null;
+    [Parameter] public int CurrentPage { get; set; }
 
-    [Parameter]
-    public bool ShowFirstLast { get; set; } = false;
+    [Parameter] public Func<int, Task> OnPageChanged { get; set; } = null;
 
-    [Parameter]
-    public bool ShowPageNumbers { get; set; } = true;
+    [Parameter] public bool ShowFirstLast { get; set; } = false;
 
-    [Parameter]
-    public string FirstText { get; set; } = "First";
+    [Parameter] public bool ShowPageNumbers { get; set; } = true;
 
-    [Parameter]
-    public string LastText { get; set; } = "Last";
+    [Parameter] public string FirstText { get; set; } = "First";
 
-    [Parameter]
-    public string PreviousText { get; set; } = "Previous";
+    [Parameter] public string LastText { get; set; } = "Last";
 
-    [Parameter]
-    public string NextText { get; set; } = "Next";
+    [Parameter] public string PreviousText { get; set; } = "Previous";
 
-    [Parameter]
-    public int VisiblePages { get; set; } = 5;
+    [Parameter] public string NextText { get; set; } = "Next";
+
+    [Parameter] public int VisiblePages { get; set; } = 5;
 
     private int Start { get; set; }
     private int Finish { get; set; }
@@ -125,9 +116,8 @@
     private bool HasPrevious => CurrentPage > 1 && PageCount > 1;
     private bool HasNext => CurrentPage < PageCount;
 
-    private bool PagerButtonClicked(int page)
+    private void PagerButtonClicked(int page)
     {
         OnPageChanged?.Invoke(page);
-        return true;
     }
 }

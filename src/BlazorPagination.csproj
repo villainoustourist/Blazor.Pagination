@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>7.3</LangVersion>
     <RazorLangVersion>3.0</RazorLangVersion>
     <PackageId>BlazorPagination</PackageId>
     <Title>Pagination control for .NET Core Blazor</Title>
@@ -12,23 +11,13 @@
     <PackageTags>blazor aspnetcore component bootstrap4 pagination</PackageTags>
     <Description>A reusable pagination component for Blazor to show related content across multiple pages.</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <AssemblyName>BlazorPagination</AssemblyName>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.0.0-preview8.19405.7" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.0.0-preview8.19405.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.0.0-rc1.19457.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.0.0-rc1.19457.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <None Include="..\..\BlazorSorting\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
 </Project>
