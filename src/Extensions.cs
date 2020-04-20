@@ -1,8 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlazorPagination
 {
@@ -14,6 +13,7 @@ namespace BlazorPagination
             var result = new PagedResult<T> { CurrentPage = page, PageSize = pageSize, RowCount = query.Count() };
             var pageCount = (double)result.RowCount / pageSize;
             result.PageCount = (int)Math.Ceiling(pageCount);
+            page = Math.Min(result.PageCount, page);
             var skip = (page - 1) * pageSize;
             result.Results = await query.Skip(skip).Take(pageSize).ToArrayAsync();
             return result;
@@ -25,6 +25,7 @@ namespace BlazorPagination
             var result = new PagedResult<T> { CurrentPage = page, PageSize = pageSize, RowCount = query.Count() };
             var pageCount = (double)result.RowCount / pageSize;
             result.PageCount = (int)Math.Ceiling(pageCount);
+            page = Math.Min(result.PageCount, page);
             var skip = (page - 1) * pageSize;
             result.Results = query.Skip(skip).Take(pageSize).ToArray();
             return result;
