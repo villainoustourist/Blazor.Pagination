@@ -24,6 +24,39 @@ Once you have installed the package add the following line in the ```_ViewImport
 ```
 ## Usage
 
+```
+...
+@using BlazorPagination
+...
+<table class="table">
+    <tbody>
+    @foreach (var item in _data.Results)
+    {
+    <tr>@item</tr>
+    }
+    </tbody>
+</table>
+<BlazorPager CurrentPage="@_data.CurrentPage"
+         PageCount="@_data.PageCount"
+         OnPageChanged="(async e => { _page = e; await FetchData();})"
+
+         ShowFirstLast="false"
+         ShowPageNumbers="true"
+         VisiblePages="10"
+         FirstText="First"
+         LastText="Last" />
+...
+@code {
+    private PagedResult<string> _data;
+    private string _filter;
+    private int _page = 1;
+    protected override OnInitialized()
+    {
+        _data = FetchData(_filter, _page);
+    }
+}
+```
+
 Default HTML output:
 
 ```
