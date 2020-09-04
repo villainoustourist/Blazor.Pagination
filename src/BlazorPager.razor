@@ -105,7 +105,7 @@
 
     [Parameter] public string NextText { get; set; } = "Next";
 
-    private int VisiblePages = 5;
+    [Parameter] public int VisiblePages { get; set; } = 5;
 
     private void PagerButtonClicked(int page)
     {
