@@ -186,6 +186,11 @@ app {
 
 /*   Added to show sort icons */
 
+table {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
 table tr th.sort {
     cursor: pointer;
 }
