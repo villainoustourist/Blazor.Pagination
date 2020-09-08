@@ -1,0 +1,72 @@
+﻿@page "/fetchdata"
+
+@using example.Data
+@using BlazorPagination
+@inject WeatherForecastService ForecastService
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (_data == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="sort @sortclass("Date")" @onclick="@( () => Sort("Date"))">Date</th>
+                <th class="sort @sortclass("TemperatureC")" @onclick="@( () => Sort("TemperatureC"))">Temp. (C)</th>
+                <th class="sort @sortclass("TemperatureF")" @onclick="@( () => Sort("TemperatureF"))">Temp. (F)</th>
+                <th class="sort @sortclass("Summary")" @onclick="@( () => Sort("Summary"))">Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in _data.Results)
+            {
+                <tr>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <BlazorPager CurrentPage="@_data.CurrentPage"
+                 PageCount="@_data.PageCount"
+                 OnPageChanged="(async e => { _page = e; await GetData();})">
+    </BlazorPager>
+}
+@code {
+    private PagedResult<WeatherForecast> _data;
+    private int _page = 1;
+    private string _sort = "Date";
+    private string _direction = "desc";
+
+    private async Task GetData()
+    {
+        _data = await ForecastService.GetForecastAsync(DateTime.Now, _page, 10, sortColumn: _sort, sortDirection: _direction);
+        StateHasChanged();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetData();
+    }
+
+    private async void Sort(string column)
+    {
+        _direction = _sort == column ? _direction == "asc" ? "desc" : "asc" : "asc";
+        _sort = column;
+        await GetData();
+    }
+
+    // sets css class to display up and down arrows
+    private string sortclass(string x)
+    {
+        return x == _sort ? _direction == "desc" ? "desc" : "asc" : "";
+    }
+}

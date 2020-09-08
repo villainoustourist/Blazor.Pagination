@@ -1,12 +1,41 @@
 ﻿using System;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace BlazorPagination
 {
     public static class Extensions
     {
+
+        public static IQueryable<T> OrderBy<T>(this IQueryable<T> source, string column, string direction)
+        {
+            try
+            {
+                if (source != null)
+                {
+                    var expression = source.Expression;
+                    var parameter = Expression.Parameter(typeof(T), "x");
+                    var selector = Expression.PropertyOrField(parameter, column);
+                    var method = direction.Equals("desc")
+                        ? "OrderByDescending"
+                        : "OrderBy";
+                    expression = Expression.Call(typeof(Queryable), method,
+                        new[] { source.ElementType, selector.Type },
+                        expression, Expression.Quote(Expression.Lambda(selector, parameter)));
+                    return source.Provider.CreateQuery<T>(expression);
+                }
+            }
+            catch (Exception)
+            {
+                // ignored if invalid sort (i.e. property doesn't exist)
+            }
+
+            return source;
+        }
+
         public static async Task<PagedResult<T>> ToPagedResultAsync<T>(this IQueryable<T> query, int page, int pageSize) where T : class
         {
             var rows = query.Count();
