@@ -32,11 +32,11 @@
             {
                 if (CurrentPage == 1)
                 {
-                    <li class="page-item disabled noselect"><a class="page-link" tabindex="-1"><span aria-hidden="true">&laquo;</span><span class="sr-only">@FirstText</span></a></li>
+                    <li class="page-item disabled noselect"><a class="page-link" tabindex="-1"><span aria-hidden="true">@FirstText</span><span class="sr-only">Go to first page</span></a></li>
                 }
                 else
                 {
-                    <li class="page-item noselect"><a class="page-link sort-link" @onclick="@(() => PagerButtonClicked(1))"><span aria-hidden="true">&laquo;</span><span class="sr-only">@FirstText</span></a></li>
+                    <li class="page-item noselect"><a class="page-link sort-link" @onclick="@(() => PagerButtonClicked(1))"><span aria-hidden="true">@FirstText</span><span class="sr-only">Go to first page</span></a></li>
                 }
             }
             @if (hasPrevious)
