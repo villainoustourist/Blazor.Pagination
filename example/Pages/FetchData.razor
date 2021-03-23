@@ -36,6 +36,12 @@ else
     </table>
     <BlazorPager CurrentPage="@_data.CurrentPage"
                  PageCount="@_data.PageCount"
+                 VisiblePages="3"
+                 ShowFirstLast="true"
+                 PreviousText="‹"
+                 NextText="›"
+                 LastText="»"
+                 FirstText="«"
                  OnPageChanged="(async e => { _page = e; await GetData();})">
     </BlazorPager>
 }
