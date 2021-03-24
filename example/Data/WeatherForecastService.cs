@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using BlazorPagination;
 
 namespace BlazorPagerExample.Data
 {
     public class WeatherForecastService
     {
-        private static readonly string[] Summaries = new[]
-        {
+        private static readonly string[] Summaries = {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
@@ -20,9 +20,9 @@ namespace BlazorPagerExample.Data
             var rng = new Random();
             _summaries = new List<WeatherForecast>();
             var date = DateTime.Now;
-            for (var i = 0; i < 141; i++)
+            for (var i = 0; i < 48; i++)
                 _summaries.Add(new WeatherForecast
-                    { Date = date.AddDays(i), Summary = Summaries[rng.Next(Summaries.Length)], TemperatureC = rng.Next(-20, 55), });
+                { Date = date.AddDays(i), Summary = Summaries[rng.Next(Summaries.Length)], TemperatureC = rng.Next(-20, 55), });
             ;
         }
 

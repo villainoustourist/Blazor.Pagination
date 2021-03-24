@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\BlazorPagination.csproj" />
+    <PackageReference Include="BlazorPagination" Version="0.2.13" />
   </ItemGroup>
 
 </Project>

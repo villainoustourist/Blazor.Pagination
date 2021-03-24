@@ -56,7 +56,7 @@ else
 
     private async Task GetData()
     {
-        _data = await ForecastService.GetForecastAsync(DateTime.Now, _page, 10, sortColumn: _sort, sortDirection: _direction);
+        _data = await ForecastService.GetForecastAsync(DateTime.Now, _page, 3, sortColumn: _sort, sortDirection: _direction);
         StateHasChanged();
     }
 
