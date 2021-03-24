@@ -10,17 +10,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>example</title>
+    <title>BlazorPagerExample</title>
     <base href="~/" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link href="css/site.css" rel="stylesheet" />
     @* for icon support - really just sorting icons here *@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="BlazorPagerExample.styles.css" rel="stylesheet" />
 </head>
 <body>
-    <app>
-        <component type="typeof(App)" render-mode="ServerPrerendered" />
-    </app>
+    <component type="typeof(App)" render-mode="ServerPrerendered" />
 
     <div id="blazor-error-ui">
         <environment include="Staging,Production">

@@ -8,16 +8,22 @@ namespace BlazorPagerExample.Data
 {
     public class WeatherForecastService
     {
+        private static readonly string[] Summaries = new[]
+        {
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
+
         private static List<WeatherForecast> _summaries;
-        private static Random rand = new Random();
+
         public WeatherForecastService()
         {
+            var rng = new Random();
             _summaries = new List<WeatherForecast>();
             var date = DateTime.Now;
-            for (int i = 0; i < 141; i++)
-            {
-                _summaries.Add(new WeatherForecast { Date = date.AddDays(i), Summary = "Freezing", TemperatureC = rand.Next(6, 22) });
-            };
+            for (var i = 0; i < 141; i++)
+                _summaries.Add(new WeatherForecast
+                    { Date = date.AddDays(i), Summary = Summaries[rng.Next(Summaries.Length)], TemperatureC = rng.Next(-20, 55), });
+            ;
         }
 
         public Task<PagedResult<WeatherForecast>> GetForecastAsync(DateTime startDate, int page, int pageSize, string sortColumn, string sortDirection)

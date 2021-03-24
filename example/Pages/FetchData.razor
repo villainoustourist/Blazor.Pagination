@@ -1,4 +1,5 @@
 ﻿@page "/fetchdata"
+
 @using BlazorPagination
 @using BlazorPagerExample.Data
 @inject WeatherForecastService ForecastService
@@ -34,6 +35,7 @@ else
             }
         </tbody>
     </table>
+
     <BlazorPager CurrentPage="@_data.CurrentPage"
                  PageCount="@_data.PageCount"
                  VisiblePages="3"
@@ -45,6 +47,7 @@ else
                  OnPageChanged="(async e => { _page = e; await GetData();})">
     </BlazorPager>
 }
+
 @code {
     private PagedResult<WeatherForecast> _data;
     private int _page = 1;
