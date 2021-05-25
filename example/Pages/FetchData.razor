@@ -40,10 +40,11 @@ else
                  PageCount="@_data.PageCount"
                  VisiblePages="3"
                  ShowFirstLast="true"
-                 PreviousText="‹"
-                 NextText="›"
-                 LastText="»"
-                 FirstText="«"
+                 ShowPageNumbers="true"
+                 FirstText="&laquo;"
+                 LastText="&raquo;"
+                 NextText="&rsaquo;"
+                 PreviousText="&lsaquo;" 
                  OnPageChanged="(async e => { _page = e; await GetData();})">
     </BlazorPager>
 }

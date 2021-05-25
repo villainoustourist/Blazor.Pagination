@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlazorPagination" Version="0.2.13" />
+    <PackageReference Include="BlazorPagination" Version="0.2.12" />
   </ItemGroup>
 
 </Project>
