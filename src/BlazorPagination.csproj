@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <PackageId>BlazorPagination</PackageId>
+    <Version>0.3.0</Version>
     <Title>Pagination control for .NET Core Blazor</Title>
     <Authors>villainoustourist</Authors>
     <Product>BlazorPagination</Product>
